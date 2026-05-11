@@ -16,7 +16,9 @@ export const apiRequest = async(endpoint, method="GET", body=null) => {
 
   if(!response.ok){
     const text = await response.text();
-    throw new Error(text || "API Failed");
+    const error = new Error(text || "API Failed");
+    error.status = response.status;
+    throw error;
   }
 
   if(method === "DELETE"){

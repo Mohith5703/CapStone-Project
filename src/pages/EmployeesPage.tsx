@@ -24,6 +24,7 @@ const displayValue = (value: any, fallback = "-") => {
 };
 
 const getId = (employee: Employee) => employee.id || employee.employeeId || employee._id;
+const isNotFoundError = (error: any) => error?.status === 404 || error?.status === 410;
 
 export default function EmployeesPage() {
   const navigate = useNavigate();
@@ -61,6 +62,17 @@ export default function EmployeesPage() {
 
     try {
       await employeeService.delete(id);
+      try {
+        await employeeService.getById(id);
+        await loadEmployees();
+        alert("Employee was not deleted from the database. Please fix the backend DELETE /employees/{id} API.");
+        return;
+      } catch (verifyError) {
+        if (!isNotFoundError(verifyError)) {
+          throw verifyError;
+        }
+      }
+
       setEmployees((current) => current.filter((item) => String(getId(item)) !== String(id)));
       alert("Employee deleted successfully");
     } catch (error) {

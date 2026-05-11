@@ -4,7 +4,13 @@ import { employeeService } from "../services/employeeService";
 
 type Employee = Record<string, any>;
 
-const getList = (data: any): Employee[] => data?.content || data?.data || data || [];
+const getList = (data: any): Employee[] => {
+  if (Array.isArray(data)) return data;
+  if (Array.isArray(data?.content)) return data.content;
+  if (Array.isArray(data?.data)) return data.data;
+  if (Array.isArray(data?.data?.content)) return data.data.content;
+  return [];
+};
 
 const fullName = (employee: Employee) =>
   employee.name ||
@@ -44,21 +50,6 @@ export default function EmployeesPage() {
     loadData();
   }, []);
 
-  const isEmployeeStillPresent = (list: Employee[], deletedId: any) =>
-    list.some((item) => String(getId(item)) === String(deletedId));
-
-  const verifyEmployeeDeleted = async (id: any) => {
-    const refreshedEmployees = await loadEmployees();
-    if (isEmployeeStillPresent(refreshedEmployees, id)) {
-      throw new Error("Backend still returned this employee after delete");
-    }
-  };
-
-  const runDelete = async (id: any) => {
-    await employeeService.delete(id);
-    await verifyEmployeeDeleted(id);
-  };
-
   const deleteEmployee = async (employee: Employee) => {
     const id = getId(employee);
     if (!id) {
@@ -69,12 +60,12 @@ export default function EmployeesPage() {
     if (!window.confirm("Delete this employee?")) return;
 
     try {
-      await runDelete(id);
+      await employeeService.delete(id);
+      setEmployees((current) => current.filter((item) => String(getId(item)) !== String(id)));
       alert("Employee deleted successfully");
     } catch (error) {
       console.log(error);
-      await loadEmployees().catch(console.log);
-      alert("Employee was not deleted from the backend. Please check the backend DELETE /employees/{id} API.");
+      alert("Failed to delete employee");
     }
   };
 

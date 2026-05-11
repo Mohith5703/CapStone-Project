@@ -27,7 +27,7 @@ export default function EmployeeDisplayPage(){
  useEffect(()=>{
    loadData();
  },[id]);
-
+ // loading employees
  const loadData = async() => {
    try{
      if (id) {

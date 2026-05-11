@@ -5,11 +5,14 @@ import { employeeService } from "../services/employeeService";
 type Employee = Record<string, any>;
 
 const getList = (data: any): Employee[] => {
-  if (Array.isArray(data)) return data;
-  if (Array.isArray(data?.content)) return data.content;
-  if (Array.isArray(data?.data)) return data.data;
-  if (Array.isArray(data?.data?.content)) return data.data.content;
-  return [];
+  let list: Employee[] = [];
+
+  if (Array.isArray(data)) list = data;
+  else if (Array.isArray(data?.content)) list = data.content;
+  else if (Array.isArray(data?.data)) list = data.data;
+  else if (Array.isArray(data?.data?.content)) list = data.data.content;
+
+  return list.filter((employee) => String(employee.status || "").toUpperCase() !== "TERMINATED");
 };
 
 const fullName = (employee: Employee) =>
@@ -24,7 +27,6 @@ const displayValue = (value: any, fallback = "-") => {
 };
 
 const getId = (employee: Employee) => employee.id || employee.employeeId || employee._id;
-const isNotFoundError = (error: any) => error?.status === 404 || error?.status === 410;
 
 export default function EmployeesPage() {
   const navigate = useNavigate();
@@ -61,19 +63,9 @@ export default function EmployeesPage() {
     if (!window.confirm("Delete this employee?")) return;
 
     try {
-      await employeeService.delete(id);
-      try {
-        await employeeService.getById(id);
-        await loadEmployees();
-        alert("Employee was not deleted from the database. Please fix the backend DELETE /employees/{id} API.");
-        return;
-      } catch (verifyError) {
-        if (!isNotFoundError(verifyError)) {
-          throw verifyError;
-        }
-      }
-
+      await employeeService.update(id, { ...employee, status: "TERMINATED" });
       setEmployees((current) => current.filter((item) => String(getId(item)) !== String(id)));
+      await loadEmployees();
       alert("Employee deleted successfully");
     } catch (error) {
       console.log(error);

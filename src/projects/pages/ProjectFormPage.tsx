@@ -68,18 +68,33 @@ export default function ProjectFormPage(){
       <form onSubmit={handleSubmit}>
 
        <div className="form-grid">
-        <input name="name" value={formData.name} placeholder="Project Name" required onChange={handleChange} />
-        <input name="description" value={formData.description} placeholder="Project Description" required onChange={handleChange} />
-        <input type="date" name="startDate" value={formData.startDate} required onChange={handleChange} />
-        <input type="date" name="endDate" value={formData.endDate} required onChange={handleChange} />
+        <div className="form-field">
+         <label htmlFor="projectName">Project Name *</label>
+         <input id="projectName" name="name" value={formData.name} placeholder="Project Name" required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="projectDescription">Project Description *</label>
+         <input id="projectDescription" name="description" value={formData.description} placeholder="Project Description" required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="startDate">Start Date *</label>
+         <input id="startDate" type="date" name="startDate" value={formData.startDate} required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="endDate">End Date *</label>
+         <input id="endDate" type="date" name="endDate" value={formData.endDate} required onChange={handleChange} />
+        </div>
 
-        <select name="status" value={formData.status} onChange={handleChange}>
+        <div className="form-field">
+         <label htmlFor="projectStatus">Status</label>
+         <select id="projectStatus" name="status" value={formData.status} onChange={handleChange}>
           <option value="ACTIVE">ACTIVE</option>
           <option value="INACTIVE">INACTIVE</option>
           <option value="PLANNED">PLANNED</option>
           <option value="COMPLETED">COMPLETED</option>
           <option value="ON_HOLD">ON_HOLD</option>
-        </select>
+         </select>
+        </div>
 
        </div>
 

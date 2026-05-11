@@ -62,8 +62,14 @@ export default function DepartmentFormPage(){
       <form onSubmit={handleSubmit}>
 
        <div className="form-grid">
-        <input name="name" value={formData.name} placeholder="Department Name" required onChange={handleChange} />
-        <input name="description" value={formData.description} placeholder="Department Description" required onChange={handleChange} />
+        <div className="form-field">
+         <label htmlFor="departmentName">Department Name *</label>
+         <input id="departmentName" name="name" value={formData.name} placeholder="Department Name" required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="departmentDescription">Department Description *</label>
+         <input id="departmentDescription" name="description" value={formData.description} placeholder="Department Description" required onChange={handleChange} />
+        </div>
        </div>
 
        <div className="btn-group">

@@ -129,26 +129,17 @@ export default function EmployeesPage() {
           }}>
             Clear
           </button>
+          <label className="status-filter inline-status-filter">
+            <span>Status :</span>
+            <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+              <option value="CURRENT">Current</option>
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
+              <option value="TERMINATED">Terminated</option>
+              <option value="ALL">All</option>
+            </select>
+          </label>
         </form>
-
-        <div className="records-search" aria-label="Filter employees by status">
-          {[
-            ["CURRENT", "Current"],
-            ["ACTIVE", "Active"],
-            ["INACTIVE", "Inactive"],
-            ["TERMINATED", "Terminated"],
-            ["ALL", "All"],
-          ].map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              className={statusFilter === value ? "primary-action" : "soft-action"}
-              onClick={() => setStatusFilter(value)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
 
         <div className="records-table-wrap">
           <table className="records-table employees-table">

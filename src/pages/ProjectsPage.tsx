@@ -88,18 +88,17 @@ export default function ProjectsPage() {
           }}>
             Clear
           </button>
+          <label className="status-filter inline-status-filter">
+            <span>Status :</span>
+            <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+              <option>All</option>
+              <option>ACTIVE</option>
+              <option>PLANNED</option>
+              <option>COMPLETED</option>
+              <option>ON_HOLD</option>
+            </select>
+          </label>
         </form>
-
-        <label className="status-filter">
-          <span>Status Filter</span>
-          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
-            <option>All</option>
-            <option>ACTIVE</option>
-            <option>PLANNED</option>
-            <option>COMPLETED</option>
-            <option>ON_HOLD</option>
-          </select>
-        </label>
 
         <div className="records-table-wrap">
           <table className="records-table projects-table">
@@ -124,7 +123,7 @@ export default function ProjectsPage() {
                     </td>
                     <td>{project.description || "-"}</td>
                     <td>
-                      <div className="table-actions stacked-actions">
+                      <div className="table-actions">
                         <button className="soft-action" onClick={() => navigate(`/projects/edit/${getId(project)}`)}>
                           Edit
                         </button>

@@ -645,11 +645,29 @@ body{
   font-size:18px;
 }
 
+.inline-status-filter{
+  flex:0 0 auto;
+  flex-direction:row;
+  align-items:center;
+  gap:8px;
+  max-width:none;
+  margin:0;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.inline-status-filter select{
+  width:150px;
+  height:48px;
+  font-size:16px;
+  padding:0 12px;
+}
+
 .records-search{
   display:flex;
   align-items:center;
   gap:10px;
-  max-width:620px;
+  max-width:820px;
   margin:0 0 20px;
 }
 
@@ -715,7 +733,14 @@ body{
 
   .records-search input,
   .records-search .primary-action,
-  .records-search .soft-action{
+  .records-search .soft-action,
+  .records-search .inline-status-filter,
+  .records-search .inline-status-filter select{
     width:100%;
+  }
+
+  .records-search .inline-status-filter{
+    align-items:flex-start;
+    flex-direction:column;
   }
 }

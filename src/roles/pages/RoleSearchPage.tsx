@@ -6,7 +6,7 @@ export default function RoleSearchPage(){
 
  const [id,setId] = useState("");
  const [role,setRole] = useState(null);
-
+// rolegit searching
  const handleSearch = async() => {
   try{
    const data = await roleService.getById(id);

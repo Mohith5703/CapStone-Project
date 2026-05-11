@@ -10,6 +10,7 @@ export default function DepartmentDisplayPage(){
    loadData();
  },[]);
 
+ // load data from db
  const loadData = async() => {
    try{
      const data = await departmentService.getAll();

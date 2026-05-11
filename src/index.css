@@ -115,6 +115,9 @@ body{
   padding:18px 30px;
   flex-wrap:wrap;
   gap:15px;
+  box-shadow:0 2px 12px rgba(15,23,42,0.14);
+  position:relative;
+  z-index:10;
 }
 
 .logo-section{
@@ -141,7 +144,7 @@ body{
 
 .nav-links a{
   text-decoration:none;
-  color:white;
+  color:#1f2937;
   font-size:17px;
 }
 

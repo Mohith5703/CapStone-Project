@@ -71,9 +71,18 @@ export default function RoleFormPage(){
       <form onSubmit={handleSubmit}>
 
        <div className="form-grid">
-        <input name="name" value={formData.name} placeholder="Role Name" required onChange={handleChange} />
-        <input name="description" value={formData.description} placeholder="Role Description" required onChange={handleChange} />
-        <input name="level" value={formData.level} type="number" placeholder="Level" required onChange={handleChange} />
+        <div className="form-field">
+         <label htmlFor="roleName">Role Name *</label>
+         <input id="roleName" name="name" value={formData.name} placeholder="Role Name" required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="roleDescription">Role Description *</label>
+         <input id="roleDescription" name="description" value={formData.description} placeholder="Role Description" required onChange={handleChange} />
+        </div>
+        <div className="form-field">
+         <label htmlFor="level">Level *</label>
+         <input id="level" name="level" value={formData.level} type="number" placeholder="Level" required onChange={handleChange} />
+        </div>
        </div>
 
        <div className="btn-group">

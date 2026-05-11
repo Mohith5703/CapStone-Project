@@ -92,7 +92,7 @@ body{
 .login-card{
   width:100%;
   max-width:400px;
-  background:white;
+  background:rgb(255, 255, 255);
   padding:40px;
   border-radius:14px;
   display:flex;
@@ -111,7 +111,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#161616;
+  background:#ffffff;
   padding:18px 30px;
   flex-wrap:wrap;
   gap:15px;
@@ -126,8 +126,8 @@ body{
 }
 
 .logo{
-  width:70px;
-  background:white;
+  width:80px;
+  /* background:white; */
   padding:5px;
   border-radius:4px;
 }
@@ -317,6 +317,32 @@ body{
  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
  gap:20px;
  margin-top:30px;
+}
+
+.form-field{
+ display:flex;
+ flex-direction:column;
+ gap:8px;
+}
+
+.form-field label{
+ color:#334155;
+ font-size:14px;
+ font-weight:800;
+}
+
+.form-error{
+ color:#be1622;
+ font-size:13px;
+ font-weight:700;
+ line-height:1.3;
+ margin:0;
+}
+
+.form-grid input[aria-invalid="true"],
+.form-grid select[aria-invalid="true"]{
+ border-color:#be1622;
+ outline:2px solid rgba(190,22,34,.12);
 }
 
 .form-grid input,

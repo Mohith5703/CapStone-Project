@@ -12,7 +12,7 @@ const getList = (data: any): Employee[] => {
   else if (Array.isArray(data?.data)) list = data.data;
   else if (Array.isArray(data?.data?.content)) list = data.data.content;
 
-  return list.filter((employee) => String(employee.status || "").toUpperCase() !== "TERMINATED");
+  return list;
 };
 
 const fullName = (employee: Employee) =>
@@ -33,6 +33,7 @@ export default function EmployeesPage() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [searchText, setSearchText] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("CURRENT");
 
   const loadEmployees = async () => {
     const data = await employeeService.getAll();
@@ -75,6 +76,13 @@ export default function EmployeesPage() {
 
   const visibleEmployees = employees.filter((employee) => {
     const query = searchQuery.trim().toLowerCase();
+    const status = String(employee.status || "ACTIVE").toUpperCase();
+    const matchesStatus =
+      statusFilter === "ALL" ||
+      (statusFilter === "CURRENT" && status !== "TERMINATED") ||
+      status === statusFilter;
+
+    if (!matchesStatus) return false;
     if (!query) return true;
 
     return [getId(employee), fullName(employee)]
@@ -122,6 +130,25 @@ export default function EmployeesPage() {
             Clear
           </button>
         </form>
+
+        <div className="records-search" aria-label="Filter employees by status">
+          {[
+            ["CURRENT", "Current"],
+            ["ACTIVE", "Active"],
+            ["INACTIVE", "Inactive"],
+            ["TERMINATED", "Terminated"],
+            ["ALL", "All"],
+          ].map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              className={statusFilter === value ? "primary-action" : "soft-action"}
+              onClick={() => setStatusFilter(value)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
         <div className="records-table-wrap">
           <table className="records-table employees-table">

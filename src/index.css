@@ -28,6 +28,93 @@ body{
   width:120px;
 }
 
+.welcome-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 16px;
+  background: radial-gradient(circle at top, rgba(255, 230, 244, 0.92), transparent 28%),
+    linear-gradient(135deg, #f8e8fb 0%, #f4d5f5 38%, #e8ccf8 74%, #f9f3ff 100%);
+  color:#3c1c56;
+  text-align:center;
+}
+
+.welcome-panel{
+  max-width:760px;
+  width:100%;
+  padding:48px 36px;
+  border-radius:32px;
+  background:rgba(255,255,255,0.9);
+  border:1px solid rgba(214, 174, 237, 0.45);
+  box-shadow:0 24px 80px rgba(161, 83, 185, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.welcome-badge{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(243, 226, 245, 0.88);
+  color:#8f4da0;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-size:0.85rem;
+}
+
+.welcome-title{
+  font-size:3rem;
+  line-height:1.05;
+  margin-bottom:22px;
+  letter-spacing:-0.03em;
+  color:#5b3275;
+}
+
+.welcome-subtitle{
+  font-size:1rem;
+  line-height:1.8;
+  max-width:660px;
+  margin-inline:auto;
+  opacity:0.94;
+  color:#5b3275;
+  margin-bottom:34px;
+}
+
+.welcome-button{
+  background:linear-gradient(135deg, #ff9ad8 0%, #c88cff 100%);
+  color:#ffffff;
+  border:none;
+  padding:18px 42px;
+  border-radius:999px;
+  font-size:1.05rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform 0.24s ease, box-shadow 0.24s ease;
+  box-shadow:0 18px 48px rgba(214, 148, 238, 0.28);
+}
+
+.welcome-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 24px 60px rgba(214, 148, 238, 0.36);
+}
+
+@media(max-width:768px){
+  .welcome-title{
+    font-size:2.8rem;
+  }
+
+  .welcome-subtitle{
+    font-size:1rem;
+  }
+
+  .welcome-button{
+    width:100%;
+    padding:16px 22px;
+  }
+}
+
 .primary-btn{
   background:#0f62fe;
   color:white;
@@ -697,31 +784,31 @@ body{
 
 .employee-profile-page{
   min-height:calc(100vh - 76px);
-  padding:44px 24px 60px;
+  padding:28px 20px 44px;
   background:#f7f8fb;
   color:#111827;
 }
 
 .employee-profile-shell{
   width:100%;
-  max-width:1360px;
+  max-width:1120px;
   margin:0 auto;
 }
 
 .employee-profile-card{
   overflow:hidden;
   background:white;
-  border-radius:18px 18px 0 0;
-  box-shadow:0 18px 45px rgba(15,23,42,.08);
+  border-radius:14px 14px 0 0;
+  box-shadow:0 14px 34px rgba(15,23,42,.08);
 }
 
 .employee-profile-hero{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:32px;
-  min-height:270px;
-  padding:54px 66px;
+  gap:26px;
+  min-height:190px;
+  padding:34px 44px;
   background:linear-gradient(135deg,#0f62fe 0%,#054ada 100%);
   color:white;
 }
@@ -729,7 +816,7 @@ body{
 .employee-profile-identity{
   display:flex;
   align-items:center;
-  gap:42px;
+  gap:28px;
   min-width:0;
 }
 
@@ -738,21 +825,21 @@ body{
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  width:140px;
-  height:140px;
-  border:6px solid rgba(255,255,255,.34);
+  width:96px;
+  height:96px;
+  border:5px solid rgba(255,255,255,.34);
   border-radius:50%;
   background:rgba(255,255,255,.16);
   color:white;
-  font-size:54px;
+  font-size:38px;
   font-weight:900;
   line-height:1;
 }
 
 .employee-profile-identity h1{
-  max-width:560px;
+  max-width:480px;
   color:white;
-  font-size:52px;
+  font-size:40px;
   line-height:1.05;
   font-weight:900;
   letter-spacing:0;
@@ -763,21 +850,21 @@ body{
   display:flex;
   align-items:center;
   flex-wrap:wrap;
-  gap:14px;
-  margin-top:26px;
+  gap:10px;
+  margin-top:18px;
 }
 
 .employee-profile-badges span{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:36px;
-  padding:9px 18px;
+  min-height:28px;
+  padding:7px 14px;
   border-radius:999px;
   background:rgba(0,0,0,.15);
   box-shadow:0 4px 10px rgba(0,0,0,.12);
   color:white;
-  font-size:16px;
+  font-size:13px;
   font-weight:900;
   line-height:1;
   text-transform:uppercase;
@@ -791,19 +878,19 @@ body{
 .employee-profile-actions{
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:16px;
   flex:0 0 auto;
 }
 
 .employee-edit-btn,
 .employee-terminate-btn{
   border:none;
-  border-radius:10px;
-  min-width:166px;
-  min-height:58px;
-  padding:0 28px;
+  border-radius:9px;
+  min-width:136px;
+  min-height:46px;
+  padding:0 22px;
   cursor:pointer;
-  font-size:20px;
+  font-size:16px;
   font-weight:900;
   line-height:1;
   box-shadow:0 8px 18px rgba(15,23,42,.13);
@@ -829,15 +916,15 @@ body{
 .employee-profile-details{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:68px;
-  padding:72px 66px 84px;
+  gap:54px;
+  padding:44px 44px 54px;
 }
 
 .employee-detail-section h2{
-  padding-bottom:18px;
-  border-bottom:3px solid #edf0f4;
+  padding-bottom:14px;
+  border-bottom:2px solid #edf0f4;
   color:#111827;
-  font-size:26px;
+  font-size:22px;
   font-weight:900;
   letter-spacing:0;
 }
@@ -845,15 +932,15 @@ body{
 .employee-detail-list{
   display:flex;
   flex-direction:column;
-  gap:34px;
-  margin-top:36px;
+  gap:24px;
+  margin-top:26px;
 }
 
 .employee-detail-item span{
   display:block;
-  margin-bottom:14px;
+  margin-bottom:10px;
   color:#6b7280;
-  font-size:16px;
+  font-size:13px;
   font-weight:900;
   letter-spacing:.05em;
   text-transform:uppercase;
@@ -862,7 +949,7 @@ body{
 .employee-detail-item strong{
   display:block;
   color:#2f343b;
-  font-size:25px;
+  font-size:20px;
   font-weight:700;
   line-height:1.25;
   overflow-wrap:anywhere;
@@ -936,24 +1023,24 @@ body{
     align-items:flex-start;
     flex-direction:column;
     min-height:0;
-    padding:34px 24px;
+    padding:28px 22px;
   }
 
   .employee-profile-identity{
     align-items:flex-start;
     flex-direction:column;
-    gap:22px;
+    gap:18px;
   }
 
   .employee-avatar{
-    width:104px;
-    height:104px;
-    font-size:40px;
-    border-width:5px;
+    width:82px;
+    height:82px;
+    font-size:32px;
+    border-width:4px;
   }
 
   .employee-profile-identity h1{
-    font-size:36px;
+    font-size:32px;
   }
 
   .employee-profile-actions{
@@ -966,20 +1053,21 @@ body{
   .employee-terminate-btn{
     width:100%;
     min-width:0;
-    font-size:18px;
+    min-height:44px;
+    font-size:16px;
   }
 
   .employee-profile-details{
     grid-template-columns:1fr;
-    gap:44px;
-    padding:42px 24px 52px;
+    gap:34px;
+    padding:34px 22px 42px;
   }
 
   .employee-detail-section h2{
-    font-size:24px;
+    font-size:21px;
   }
 
   .employee-detail-item strong{
-    font-size:22px;
+    font-size:19px;
   }
 }

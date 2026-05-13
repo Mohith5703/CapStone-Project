@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
+import WelcomePage from "./pages/WelcomePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -35,6 +36,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function AppShell() {
   const location = useLocation();
+  const showNavbar = !["/", "/login"].includes(location.pathname);
   const showBackButton = [
     "/employees",
     "/departments",
@@ -44,13 +46,14 @@ function AppShell() {
 
   return (
     <>
-      <Navbar />
+      {showNavbar && <Navbar />}
       {showBackButton && <BackButton />}
 
       <Routes>
 
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
 
         <Route path="/employees" element={<ProtectedRoute><EmployeesPage /></ProtectedRoute>} />
